@@ -23,5 +23,12 @@ public class StandingPlayerState : IPlayerState
 			jumpingState.Enter(player);
 			
 		}
+		if (Input.GetKeyDown(KeyCode.R))
+		{
+			RollingPlayerState rollingState = new RollingPlayerState();
+			rollingState.Enter(player);
+			
+		}
+		
    }
 }

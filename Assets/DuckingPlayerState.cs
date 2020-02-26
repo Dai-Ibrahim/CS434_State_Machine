@@ -20,6 +20,10 @@ public class DuckingPlayerState : IPlayerState
 			StandingPlayerState standingState = new StandingPlayerState();
 			Rigidbody rbPlayer = player.GetComponent<Rigidbody>();
 			rbPlayer.transform.localScale *= 2.0f;
+			if (Input.GetKeyDown(KeyCode.Space))
+			{
+				
+			}
 			standingState.Enter(player);
 		}
    }

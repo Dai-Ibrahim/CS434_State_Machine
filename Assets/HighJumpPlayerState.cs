@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class JumpingPlayerState : IPlayerState
+public class HighJumpPlayerState : IPlayerState
 {
     // Start is called before the first frame update
       public void Enter(Player player)
    {
-   		Debug.Log("Entered jumping");
+   		Debug.Log("Entered high jumping");
 		player.mCurrentState = this;
 		Rigidbody rb = player.GetComponent<Rigidbody>();
-		rb.AddForce(0,400*Time.deltaTime, 0, ForceMode.VelocityChange);
+		rb.AddForce(0,500*Time.deltaTime, 0, ForceMode.VelocityChange);
 //		rbPlayer.transform.localScale *= 0.5f;
 		
    }
@@ -21,22 +21,13 @@ public class JumpingPlayerState : IPlayerState
 			StandingPlayerState standingState = new StandingPlayerState();
 			standingState.Enter(player);
 		}
-		if (Input.GetKeyDown(KeyCode.D))
+		if (Input.GetKeyDown(KeyCode.F))
 		{
 			//transition to standing
-			DivingPlayerState divingState = new DivingPlayerState();
+			SpiningPlayerState spinState = new SpiningPlayerState();
 //			Rigidbody rbPlayer = player.GetComponent<Rigidbody>();
 //			rbPlayer.transform.localScale *= 2.0f;
-			divingState.Enter(player);
+			spinState.Enter(player);
 		}
-		if (Input.GetKeyDown(KeyCode.H))
-		{
-			//transition to standing
-			HighJumpPlayerState highState = new HighJumpPlayerState();
-//			Rigidbody rbPlayer = player.GetComponent<Rigidbody>();
-//			rbPlayer.transform.localScale *= 2.0f;
-			highState.Enter(player);
-		}
-		
    }
 }
